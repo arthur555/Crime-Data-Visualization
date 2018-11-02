@@ -1,0 +1,60 @@
+PGHOST = 'localhost'
+PGUSER = process.env.USER
+PGDATABASE =                // to be filled out
+PGPASSWORD = null
+PGPORT = 5432
+
+const {Pool} = require('pg')
+
+const pool = new Pool()
+
+//throws an error for any idle client
+pool.on('error', (err, client) => {
+    console.error('Unexpected error on idle client', err)
+    process.exit(-1)
+})
+
+
+
+// query definition: insertion
+const table = 'crime'                                            //specify tablename here
+const schema = '(crime_id, time, pd_id, type, location)'         //specify schema here
+
+const text = 'INSERT INTO $1$2 VALUES($3, $4, $5, $6) RETURNING *'
+const values = [table, schema, '1', '2018-01-09 10:00:00', '37', 'Duke']        //specify values to be inserted here 
+
+
+//query definition: selection
+const table = 'crime'
+const columns = 'crime_id, time'
+const condition = 'crime_id = 1'
+
+const text = 'SELECT $1 FROM $2 WHERE $3'           // to be expanded according to use case
+const values = [columns, table, condition]
+
+
+// query execution: promise
+pool.connect()
+    .then(client => {
+        return client.query(text, values)
+            .then(res =>{
+                client.release()
+                console.log(res.rows[0])        // to be defined according to use case
+            })
+            .catch(e=>{
+                client.release()
+                console.log(e.stack)
+            })
+    })
+
+
+// or: if it's just a simple query
+pool.query(text, values)
+    .then(res => console.log(res.rows[0]))
+    .catch(e =>{throw e})
+
+
+// shut down
+console.log('calling end')
+await pool.end()
+console.log('pool has drained')
