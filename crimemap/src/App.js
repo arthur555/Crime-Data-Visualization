@@ -3,14 +3,22 @@ import ReactDOM from 'react-dom';
 import About from './menu/About';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import { Header } from './menu/Header';
+import './App.css';
 
 class App extends React.Component {
+  state = {
+    currentCity: null
+  };
+
   render() {
+    const { currentCity } = this.state;
     return (
       <Router>
-        <div>
-          <Header />
-        </div>
+        <Header
+          currentCity={currentCity}
+          cities={['Durham', 'Nashville', 'SF']}
+          onCitySelected={city => this.setState({ currentCity: city })}
+        />
       </Router>
     );
   }
