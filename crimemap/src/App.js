@@ -20,7 +20,6 @@ class App extends React.Component {
           cities={['Durham', 'Nashville', 'SF']}
           onCitySelected={city => this.setState({ currentCity: city })}
         />
-        <MapArea />
       </Router>
     );
   }
