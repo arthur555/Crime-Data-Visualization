@@ -27,13 +27,13 @@ export default class MapArea extends React.Component {
 
 function Geo(props){
     return props.features.map( (e)=>
-        <GeoJSON data ={e} style ={{color: "#FF4500", opacity: e.intensity}} />
+        <GeoJSON data ={e} style ={{color: "#FF4500", fillOpacity: e.intensity}} />
     );
 }
 
 const example = [{
     "type": "Feature",
-    "intensity": 0,
+    "intensity": 1,
     "properties": {},
     "geometry": {
         "type": "Polygon",
