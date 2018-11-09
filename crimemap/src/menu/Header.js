@@ -9,6 +9,7 @@ const Navbar = styled('div')`
   height: 80px;
   display: flex;
   justify-content: space-between;
+  z-index:1000;
 `;
 
 const Logo = styled('img')`

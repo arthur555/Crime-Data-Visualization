@@ -8,17 +8,19 @@ import 'leaflet/dist/leaflet.css';
             return <GeoJSON  data={getGeoJson()} style={{color:'red'} obj={object} key={i} />;
          })}
 */
-const center = [51.505, -0.09]
+
+// durham
+const center = [35.9940,-78.8986]
 
 export default class MapArea extends React.Component {
   render() {
     return (
-      <Map center={center} zoom={13} style ={{ flex:1, height:800}}>
+      <Map center={center} zoom={13} style ={{ flex:1, height: 800}}>
         <TileLayer
           attribution="&amp;copy <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        <GeoJSON data={getGeoJson()} style={{color:'red'}} />
+        <GeoJSON data={getGeoJson()} style={{color:'orange'}} />
       </Map>
     );
   }
