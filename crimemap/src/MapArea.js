@@ -14,7 +14,7 @@ const center = [37.77, -122.4194];
 export default class MapArea extends React.Component {
   render() {
     return (
-      <Map center={center} zoom={13} style ={{ flex:1, height:800}}>
+      <Map center={center} zoom={13} style ={{ flex:1, height: 800}}>
         <TileLayer
           attribution="&amp;copy <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
