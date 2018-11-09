@@ -5,6 +5,12 @@ import 'leaflet/dist/leaflet.css';
 
 const center = [37.77, -122.4194];
 
+/*
+        {objects.map(function(object, i){
+            return <GeoJSON  data={getGeoJson()} style={{color:'red'} obj={object} key={i} />;
+         })}
+*/
+
 export default class MapArea extends React.Component {
   render() {
     return (
