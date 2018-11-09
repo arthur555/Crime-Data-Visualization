@@ -3,6 +3,11 @@ import { Map, Marker, Popup, TileLayer,LayersControl, GeoJSON } from 'react-leaf
 import 'leaflet/dist/leaflet.css';
 
 
+/*
+        {objects.map(function(object, i){
+            return <GeoJSON  data={getGeoJson()} style={{color:'red'} obj={object} key={i} />;
+         })}
+*/
 const center = [51.505, -0.09]
 
 export default class MapArea extends React.Component {
@@ -13,7 +18,7 @@ export default class MapArea extends React.Component {
           attribution="&amp;copy <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        <GeoJSON data={getGeoJson()} style={this.getStyle} />
+        <GeoJSON data={getGeoJson()} style={{color:'red'}} />
       </Map>
     );
   }
